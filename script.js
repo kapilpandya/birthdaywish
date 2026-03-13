@@ -1,14 +1,9 @@
-// Cursor following effect
-const cursor = document.querySelector('.cursor');
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
 // Typing effect for greeting
 const greetingText = "Hey You Know What! You're the most precious person in my life! 💖";
 const greetingElement = document.querySelector('.greeting');
 let charIndex = 0;
+
+let greetingsLoaded = false;
 
 function typeGreeting() {
     if (charIndex < greetingText.length) {
@@ -16,6 +11,12 @@ function typeGreeting() {
         charIndex++;
         setTimeout(typeGreeting, 100);
     }
+    else {
+        greetingsLoaded = true;
+        let ctaButton = document.querySelector('.cta-button');
+        ctaButton.style.display = 'inline-block';
+    }
+    
 }
 
 // Create floating elements
